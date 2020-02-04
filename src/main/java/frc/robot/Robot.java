@@ -71,7 +71,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(m_xController.getTriggerAxis(Hand.kLeft) - m_xController.getTriggerAxis(Hand.kRight), m_xController.getX(Hand.kLeft));
+    double forward = m_xController.getTriggerAxis(Hand.kRight);
+    double reverse = m_xController.getTriggerAxis(Hand.kLeft);
+    double steering = m_xController.getX(Hand.kLeft);
+    m_robotDrive.arcadeDrive(forward - reverse, steering);
   }
 
   /**
